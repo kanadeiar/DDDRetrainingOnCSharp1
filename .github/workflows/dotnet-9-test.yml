@@ -1,0 +1,34 @@
+name: .NET 9 Test
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "dev", "main" ]
+
+jobs:
+
+  test:
+
+    name: Test on .NET 9
+    
+    runs-on: windows-latest
+
+    steps:
+    
+    - name: Checkout
+      uses: actions/checkout@v3
+    
+    - name: Setup .NET 9
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: 9.0.x
+
+    - name: Restore dependencies
+      run: dotnet restore
+        
+    - name: Build
+      run: dotnet build --no-restore -c debug
+      
+    - name: Test
+      run: dotnet test --no-build -c debug -v normal
