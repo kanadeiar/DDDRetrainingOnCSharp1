@@ -1,12 +1,11 @@
 ﻿using System.Runtime.CompilerServices;
 using Kanadeiar.Common;
-using Task1.Data;
-using Task1.QuestionnaireModule;
+using Task1.QuestionnaireSub.MainLogicLayer.QuestionnaireModule;
 
-[assembly: InternalsVisibleTo("Task1.Tests.EndToEnd")]
-namespace Task1.Services;
+[assembly: InternalsVisibleTo("Task1TransactionScript.QuestionnaireSub.Tests.EndToEnd")]
+namespace Task1.QuestionnaireSub.PresentationLayer.Scripts;
 
-public class QuestionnaireService
+public class QuestionnaireScript
 {
     public Result<Questionnaire> InputFromConsole()
     {
@@ -32,13 +31,9 @@ public class QuestionnaireService
     {
         try
         {
-            var source = new FormatCodesSource();
-
-            foreach (var each in source.GetVariants())
+            foreach (var each in questionnaire.GetFormattedTexts())
             {
-                var text = questionnaire.GetFormattedText(each.Item2);
-
-                ConsoleHelper.PrintValueWithMessage(each.Item1, text);
+                ConsoleHelper.PrintValueWithMessage(each.message, each.text);
             }
 
             return Result.Ok();

@@ -6,9 +6,9 @@ ConsoleHelper.PrintHeader("Задача № 1. Написать программ
 var service = new QuestionnaireService();
 
 var questionnaire = service.InputFromConsole()
-    .Throw(none => throw new ApplicationException(none.Message));
+    .Throw(none => throw new ApplicationException(none.Error));
 
 service.PrintToConsole(questionnaire)
-    .Throw(none => throw new ApplicationException(none.Message));
+    .Throw(none => throw new ApplicationException(none.Error));
 
 ConsoleHelper.PrintFooter();

@@ -2,83 +2,83 @@
 
 namespace Kanadeiar.Common;
 
-public interface INone
+public interface IFail
 {
-    public string Message { get; }
+    public string Error { get; }
 }
 
-public interface ISome<out T>
+public interface IOk<out T>
 {
     public T Value { get; }
 }
 
-public class Option<T>(T value) : ISome<T>
+public class Result<T>(T value) : IOk<T>
 {
-    T ISome<T>.Value => value;
+    T IOk<T>.Value => value;
 }
 
-public class None<T>(string message) : Option<T>(default!), INone
+public class Fail<T>(string error) : Result<T>(default!), IFail
 {
-    string INone.Message => message;
+    string IFail.Error => error;
 }
 
-public class Option() : Option<bool>(false)
+public class Result() : Result<bool>(false)
 {
-    public static Option<T> Some<T>(T value) => new(value);
+    public static Result<T> Ok<T>(T value) => new(value);
 
-    public static Option<T> None<T>(string message) =>
-        new None<T>(message);
+    public static Result<T> Fail<T>(string error) =>
+        new Fail<T>(error);
 
-    public static Option Some() => new();
+    public static Result Ok() => new();
 
-    public static Option None(string message) =>
-        new None(message);
+    public static Result Fail(string error) =>
+        new Fail(error);
 }
 
-public class None(string message) : Option, INone
+public class Fail(string error) : Result, IFail
 {
-    string INone.Message => message;
+    string IFail.Error => error;
 }
 
-public static class OptionSupport
+public static class ResultSupport
 {
-    public static T TryGetValue<T>(this Option<T> option, Func<INone, T> noneFunc)
+    public static T TryGetValue<T>(this Result<T> result, Func<IFail, T> failFunc)
     {
-        return option switch
+        return result switch
         {
-            INone none => noneFunc(none),
-            ISome<T> some => some.Value,
-            _ => throw new ArgumentOutOfRangeException(nameof(option))
+            IFail fail => failFunc(fail),
+            IOk<T> ok => ok.Value,
+            _ => throw new ArgumentOutOfRangeException(nameof(result))
         };
     }
 
-    public static T TryGetValue<T>(this Option<T> option, Func<T> noneFunc)
+    public static T TryGetValue<T>(this Result<T> result, Func<T> failFunc)
     {
-        return option switch
+        return result switch
         {
-            INone _ => noneFunc(),
-            ISome<T> some => some.Value,
-            _ => throw new ArgumentOutOfRangeException(nameof(option))
+            IFail _ => failFunc(),
+            IOk<T> ok => ok.Value,
+            _ => throw new ArgumentOutOfRangeException(nameof(result))
         };
     }
 
-    public static T Throw<T>(this Option<T> option, Func<INone, Exception> exceptionFunc)
+    public static T Throw<T>(this Result<T> result, Func<IFail, Exception> exceptionFunc)
     {
-        return option switch
+        return result switch
         {
-            INone none => throw exceptionFunc(none),
-            ISome<T> some => some.Value,
-            _ => throw new ArgumentOutOfRangeException(nameof(option))
+            IFail fail => throw exceptionFunc(fail),
+            IOk<T> ok => ok.Value,
+            _ => throw new ArgumentOutOfRangeException(nameof(result))
         };
     }
 
-    public static T Throw<T>(this Option<T> option, Func<Exception> exceptionFunc)
+    public static T Throw<T>(this Result<T> result, Func<Exception> exceptionFunc)
     {
-        return option switch
+        return result switch
         {
-            INone _ => throw exceptionFunc(),
-            ISome<T> some => some.Value,
-            _ => throw new ArgumentOutOfRangeException(nameof(option))
+            IFail _ => throw exceptionFunc(),
+            IOk<T> ok => ok.Value,
+            _ => throw new ArgumentOutOfRangeException(nameof(result))
         };
     }
 }

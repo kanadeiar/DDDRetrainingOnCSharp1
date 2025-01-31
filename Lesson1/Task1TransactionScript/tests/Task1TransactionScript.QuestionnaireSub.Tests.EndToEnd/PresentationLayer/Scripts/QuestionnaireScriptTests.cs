@@ -4,12 +4,12 @@ using Kanadeiar.Common;
 using Kanadeiar.Tests;
 using Moq;
 using RearmCSharp1L1T1.Questionnaire.PresentationLayer.Abstractions;
-using Task1.QuestionnaireModule;
-using Task1.Services;
+using Task1.QuestionnaireSub.MainLogicLayer.QuestionnaireModule;
+using Task1.QuestionnaireSub.PresentationLayer.Scripts;
 
-namespace Task1.Tests.EndToEnd.Services;
+namespace Task1TransactionScript.QuestionnaireSub.Tests.EndToEnd.PresentationLayer.Scripts;
 
-public class QuestionnaireServiceTests
+public class QuestionnaireScriptTests
 {
     /// <summary>
     /// Оптимистичный сценарий:
@@ -23,11 +23,11 @@ public class QuestionnaireServiceTests
         mock.SetupSequence(x => x.ReadLine())
             .Returns(surName).Returns(name).Returns(age.ToString).Returns(height.ToString).Returns(weight.ToString);
         ConsoleHelper.console = mock.Object;
-        var sut = new QuestionnaireService();
+        var sut = new QuestionnaireScript();
 
         //Успешный ввод данных из консоли.
         var actual = sut.InputFromConsole()
-            .TryGetValue(x => throw new ApplicationException());
+            .TryGetValue(_ => throw new ApplicationException());
 
         var values = actual.deconstruct();
         values.Item1.Should().Be(surName);
@@ -40,7 +40,7 @@ public class QuestionnaireServiceTests
         var expecteds = actual.deconstruct();
 
         var result = sut.PrintToConsole(actual);
-        
+
         result.Should().BeOfType<Result>();
         mock.Verify(x => x.WriteLine("Склеивание:"));
         mock.Verify(x => x.WriteLine("Форматирование:"));
@@ -49,17 +49,17 @@ public class QuestionnaireServiceTests
     }
 
     /// <summary>
-    /// Негативный сценарий:
-    /// Неудачный ввод анкеты через ввод данных с консоли.
+    /// Пессимистичный сценарий:
+    /// Неудачный ввод данных из консоли.
     /// </summary>
     [Theory]
     [AutoMoqData]
-    public void TestInputFromConsole_WhenError_ThenNone(Mock<IConsole> mock)
+    public void TestInputFromConsole_WhenError(Mock<IConsole> mock)
     {
         mock.Setup(x => x.ReadLine())
             .Returns(() => throw new IOException());
         ConsoleHelper.console = mock.Object;
-        var sut = new QuestionnaireService();
+        var sut = new QuestionnaireScript();
 
         var actual = sut.InputFromConsole();
 
@@ -67,18 +67,18 @@ public class QuestionnaireServiceTests
     }
 
     /// <summary>
-    /// Негативный сценарий:
+    /// Пессимистичный сценарий:
     /// Неудачный вывод данных в консоль.
     /// </summary>
     [Theory]
     [InlineAutoMoqData("Тестов", "Тест", 60, 150, 80)]
-    public void TestPrintToConsole_WhenError_ThenNone(string surName, string name, int age, int height, int weight, Mock<IConsole> mock)
+    public void TestPrintToConsole_WhenError(string surName, string name, int age, int height, int weight, Mock<IConsole> mock)
     {
         var questionnaire = new Questionnaire(surName, name, age, height, weight);
         mock.Setup(x => x.WriteLine(It.IsAny<string>()))
             .Throws(new IOException());
         ConsoleHelper.console = mock.Object;
-        var sut = new QuestionnaireService();
+        var sut = new QuestionnaireScript();
 
         var actual = sut.PrintToConsole(questionnaire);
 

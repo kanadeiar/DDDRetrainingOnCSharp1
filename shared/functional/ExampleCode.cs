@@ -4,13 +4,13 @@ namespace RefactoringLab.Common;
 
 public abstract record ExampleCode
 {
-    public Option<int> CreateWithOption(ExampleCode code)
+    public Result<int> CreateWithOption(ExampleCode code)
     {
         return code.Require(code != null) switch
         {
-            FirstCode => Option.Some(1),
-            SecondCode => Option.Some(2),
-            _ => Option.None<int>("none"),
+            FirstCode => Result.Ok(1),
+            SecondCode => Result.Ok(2),
+            _ => Result.Fail<int>("none"),
         };
     }
 
@@ -25,11 +25,11 @@ public abstract record ExampleCode
         };
     }
 
-    public Option ExampleAction(bool value)
+    public Result ExampleAction(bool value)
     {
         return value 
-            ? Option.Some() 
-            : Option.None("Ничего нет");
+            ? Result.Ok() 
+            : Result.Fail("Ничего нет");
     }
 
     public static ExampleCode First => new FirstCode();
