@@ -6,11 +6,11 @@ using Task1.QuestionnaireSub.MainLogicLayer.QuestionnaireModule.Formatting;
 [assembly: InternalsVisibleTo("Task1TransactionScript.QuestionnaireSub.Tests.EndToEnd")]
 namespace Task1.QuestionnaireSub.MainLogicLayer.QuestionnaireModule;
 
-public class Questionnaire(string surName, string name, int age, int height, int weight)
+public class Questionnaire(int id, string? surName, string? name, int age, int height, int weight)
 {
-    private readonly string _surName = surName.Require(surName.Length is > 3 and < 90, () =>
+    private readonly string _surName = surName!.Require(surName!.Length is > 3 and < 90, () =>
         throw new ApplicationException("Фамилия должна быть длинной от 3 до 90 символов"));
-    private readonly string _name = name.Require(name.Length is > 3 and < 90, () =>
+    private readonly string _name = name!.Require(name!.Length is > 3 and < 90, () =>
         throw new ApplicationException("Имя должно быть длинной от 3 до 90 символов"));
     private readonly int _age = age.Require(age is > 1 and < 100, () =>
         throw new ApplicationException("Возраст должен быть от 1 до 100 лет"));
@@ -18,7 +18,7 @@ public class Questionnaire(string surName, string name, int age, int height, int
         throw new ApplicationException("Рост должнен быть от 50 до 200 см"));
     private readonly int _weight = weight.Require(weight is > 10 and < 200, () =>
         throw new ApplicationException("Вес должен быть от 10 до 200 кг"));
-    
+
     public IEnumerable<(string message, string text)> GetFormattedTexts()
     {
         var source = new FormatCodesSource();
@@ -27,11 +27,9 @@ public class Questionnaire(string surName, string name, int age, int height, int
         {
             var code = FormatCode.Create(each.code);
 
-            var text = code.FormatText(deconstruct());
-
-            yield return (each.message, text);
+            yield return (each.message, text: code.FormatText(deconstruct()));
         }
     }
 
-    internal (string, string, int, int, int) deconstruct() => (_surName, _name, _age, _height, _weight);
+    internal (int, string, string, int, int, int) deconstruct() => (id, _surName, _name, _age, _height, _weight);
 }

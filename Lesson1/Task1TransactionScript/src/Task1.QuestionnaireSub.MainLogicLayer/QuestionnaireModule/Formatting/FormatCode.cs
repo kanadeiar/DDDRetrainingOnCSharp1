@@ -15,5 +15,5 @@ public record FormatCode
         };
     }
 
-    public virtual string FormatText((string surName, string name, int age, int height, int weight) values) => string.Empty;
+    public virtual string FormatText((int id, string surName, string name, int age, int height, int weight) values) => string.Empty;
 }
