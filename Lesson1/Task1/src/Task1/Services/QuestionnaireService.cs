@@ -8,7 +8,7 @@ namespace Task1.Services;
 
 public class QuestionnaireService
 {
-    public Option<Questionnaire> InputFromConsole()
+    public Result<Questionnaire> InputFromConsole()
     {
         try
         {
@@ -20,15 +20,15 @@ public class QuestionnaireService
 
             var result = new Questionnaire(surName, name, age, height, weight);
 
-            return Option.Some(result);
+            return Result.Ok(result);
         }
         catch (Exception e)
         {
-            return Option.None<Questionnaire>("Не удалось получить анкету с консоли. Ошибка: " + e);
+            return Result.Fail<Questionnaire>("Не удалось получить анкету с консоли. Ошибка: " + e);
         }
     }
 
-    public Option PrintToConsole(Questionnaire questionnaire)
+    public Result PrintToConsole(Questionnaire questionnaire)
     {
         try
         {
@@ -41,11 +41,11 @@ public class QuestionnaireService
                 ConsoleHelper.PrintValueWithMessage(each.Item1, text);
             }
 
-            return Option.Some();
+            return Result.Ok();
         }
         catch (Exception e)
         {
-            return Option.None("Не удалось распечатать результаты в консоли. Ошибка: " + e);
+            return Result.Fail("Не удалось распечатать результаты в консоли. Ошибка: " + e);
         }
     }
 }

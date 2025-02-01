@@ -41,7 +41,7 @@ public class QuestionnaireServiceTests
 
         var result = sut.PrintToConsole(actual);
         
-        result.Should().BeOfType<Option>();
+        result.Should().BeOfType<Result>();
         mock.Verify(x => x.WriteLine("Склеивание:"));
         mock.Verify(x => x.WriteLine("Форматирование:"));
         mock.Verify(x => x.WriteLine("Интерполяция:"));
@@ -63,7 +63,7 @@ public class QuestionnaireServiceTests
 
         var actual = sut.InputFromConsole();
 
-        actual.Should().BeOfType<None<Questionnaire>>();
+        actual.Should().BeOfType<Fail<Questionnaire>>();
     }
 
     /// <summary>
@@ -82,6 +82,6 @@ public class QuestionnaireServiceTests
 
         var actual = sut.PrintToConsole(questionnaire);
 
-        actual.Should().BeOfType<None>();
+        actual.Should().BeOfType<Fail>();
     }
 }
