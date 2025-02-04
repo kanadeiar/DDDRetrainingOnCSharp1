@@ -1,5 +1,6 @@
 ﻿using Kanadeiar.Common;
 using Task1.QuestionnaireSub.MainLogicLayer.QuestionnaireModule;
+using Task1.QuestionnaireSub.MainLogicLayer.QuestionnaireModule.Models;
 
 namespace Task1.QuestionnaireSub.ServiceLayer.Services;
 
@@ -26,8 +27,22 @@ public class QuestionnaireService
         }
     }
 
-    public IEnumerable<(string, string)> FormattedTexts()
+    public Result<FormattedTexts> FormatTexts(int id)
     {
-        throw new NotImplementedException();
+        try
+        {
+            var result = Questionnaire.Find(id);
+
+            return result switch
+            {
+                IFail fail => Result.Fail<FormattedTexts>("Не удалось создать анкету: " + fail.Error),
+                IOk<Questionnaire> ok => Result.Ok(ok.Value.FormatTexts()),
+                _ => throw new IndexOutOfRangeException(nameof(result)),
+            };
+        }
+        catch (Exception e)
+        {
+            return Result.Fail<FormattedTexts>("Не удалось получить текстовую информацию из анкеты. Ошибка: " + e);
+        }
     }
 }

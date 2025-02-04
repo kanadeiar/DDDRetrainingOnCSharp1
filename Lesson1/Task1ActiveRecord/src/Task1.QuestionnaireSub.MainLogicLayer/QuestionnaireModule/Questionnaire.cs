@@ -1,6 +1,8 @@
 ﻿using Kanadeiar.Common;
 using Task1.QuestionnaireSub.DataAccessLayer;
 using Task1.QuestionnaireSub.DataAccessLayer.Contracts;
+using Task1.QuestionnaireSub.MainLogicLayer.QuestionnaireModule.Formatting;
+using Task1.QuestionnaireSub.MainLogicLayer.QuestionnaireModule.Models;
 
 namespace Task1.QuestionnaireSub.MainLogicLayer.QuestionnaireModule;
 
@@ -27,6 +29,28 @@ public class Questionnaire(int recordId, string? surName, string? name, int age,
         return result;
     }
 
+    public static Result<Questionnaire> Find(int id)
+    {
+        try
+        {
+            var entry = Registry.Storage.Load(id);
+            if (entry is null) return Result.Fail<Questionnaire>($"Анкета с идентификатором {id} не найдена");
+
+            var result = new Questionnaire(entry.Id,
+                entry.SurName,
+                entry.Name,
+                entry.Age,
+                entry.Height,
+                entry.Weight);
+
+            return Result.Ok(result);
+        }
+        catch (Exception e)
+        {
+            return Result.Fail<Questionnaire>("Не удалось найти анкету в базе данных. Ошибка: " + e);
+        }
+    }
+
     public Result Add()
     {
         try
@@ -51,26 +75,11 @@ public class Questionnaire(int recordId, string? surName, string? name, int age,
         }
     }
 
-    public Result<Questionnaire> Find(int id)
+    public FormattedTexts FormatTexts()
     {
-        try
-        {
-            var entry = Registry.Storage.Load(id);
-            if (entry is null) return Result.Fail<Questionnaire>($"Анкета с идентификатором {id} не найдена");
+        var texts = FormatCode.AllCodes().Select(c => c.FormatText(this));
 
-            var result = new Questionnaire(entry.Id,
-                entry.SurName,
-                entry.Name,
-                entry.Age,
-                entry.Height,
-                entry.Weight);
-
-            return Result.Ok(result);
-        }
-        catch (Exception e)
-        {
-            return Result.Fail<Questionnaire>("Не удалось найти анкету в базе данных. Ошибка: " + e);
-        }
+        return new FormattedTexts(texts);
     }
 
     internal (int, string, string, int, int, int) deconstruct() => (RecordId, _surName, _name, _age, _height, _weight);

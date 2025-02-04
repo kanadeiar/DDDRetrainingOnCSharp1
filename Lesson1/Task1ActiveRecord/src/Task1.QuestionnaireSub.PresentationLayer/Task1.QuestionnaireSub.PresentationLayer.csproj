@@ -12,4 +12,9 @@
     </Compile>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Task1.QuestionnaireSub.DataAccessLayer\Task1.QuestionnaireSub.DataAccessLayer.csproj" />
+    <ProjectReference Include="..\Task1.QuestionnaireSub.ServiceLayer\Task1.QuestionnaireSub.ServiceLayer.csproj" />
+  </ItemGroup>
+
 </Project>
