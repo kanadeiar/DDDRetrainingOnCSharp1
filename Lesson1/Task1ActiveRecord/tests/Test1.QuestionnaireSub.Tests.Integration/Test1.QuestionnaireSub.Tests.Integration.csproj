@@ -33,6 +33,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\Task1.QuestionnaireSub.ServiceLayer\Task1.QuestionnaireSub.ServiceLayer.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Using Include="Xunit" />
   </ItemGroup>
 

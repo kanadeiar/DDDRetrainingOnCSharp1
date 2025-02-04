@@ -12,12 +12,8 @@ namespace Task1TransactionScript.QuestionnaireSub.Tests.EndToEnd.PresentationLay
 
 public class QuestionnaireScriptTests
 {
-    /// <summary>
-    /// Оптимистичный сценарий:
-    /// Успешное заполнение анкеты через ввод данных с консоли.
-    /// Успешный вывод данных анкеты в консоль тремя разными способами.
-    /// </summary>
-    [Theory]
+    [Theory(DisplayName = "Оптимистичный сценарий: - Успешное заполнение анкеты через ввод данных с консоли. " +
+                          "- Успешный вывод данных анкеты в консоль тремя разными способами.")]
     [InlineAutoMoqData("Тестов", "Тест", 60, 150, 80)]
     public void TestInputAndPrint(string surName, string name, int age, int height, int weight, Mock<IConsole> mock)
     {
@@ -47,11 +43,7 @@ public class QuestionnaireScriptTests
         mock.Verify(x => x.WriteLine($"{expected.SurName} {expected.Name} {expected.Age} лет {expected.Height} см {expected.Weight} кг"), Times.Exactly(3));
     }
 
-    /// <summary>
-    /// Пессимистичный сценарий:
-    /// Неудачный ввод данных из консоли.
-    /// </summary>
-    [Theory]
+    [Theory(DisplayName = "Пессимистичный сценарий: Неудачный ввод данных из консоли.")]
     [AutoMoqData]
     public void TestInputFromConsole_WhenError(Mock<IConsole> mock)
     {
@@ -66,11 +58,7 @@ public class QuestionnaireScriptTests
         actual.Should().BeOfType<Fail<int>>();
     }
 
-    /// <summary>
-    /// Пессимистичный сценарий:
-    /// Неудачный вывод данных в консоль.
-    /// </summary>
-    [Theory]
+    [Theory(DisplayName = "Пессимистичный сценарий: Неудачный вывод данных в консоль.")]
     [InlineAutoMoqData("Тестов", "Тест", 60, 150, 80)]
     public void TestPrintToConsole_WhenError(string surName, string name, int age, int height, int weight, Mock<IConsole> mock)
     {

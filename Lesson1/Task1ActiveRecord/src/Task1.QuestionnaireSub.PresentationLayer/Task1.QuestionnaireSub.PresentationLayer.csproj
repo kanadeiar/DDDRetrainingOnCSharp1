@@ -12,8 +12,4 @@
     </Compile>
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Task1.QuestionnaireSub.SeriviceLayer\Task1.QuestionnaireSub.SeriviceLayer.csproj" />
-  </ItemGroup>
-
 </Project>

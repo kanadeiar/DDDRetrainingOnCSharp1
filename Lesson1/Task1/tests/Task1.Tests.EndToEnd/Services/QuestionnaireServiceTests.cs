@@ -11,12 +11,8 @@ namespace Task1.Tests.EndToEnd.Services;
 
 public class QuestionnaireServiceTests
 {
-    /// <summary>
-    /// Оптимистичный сценарий:
-    /// Успешное заполнение анкеты через ввод данных с консоли.
-    /// Успешный вывод данных анкеты в консоль тремя разными способами.
-    /// </summary>
-    [Theory]
+    [Theory(DisplayName = "Оптимистичный сценарий: Успешное заполнение анкеты через ввод данных с консоли. " +
+                          "Успешный вывод данных анкеты в консоль тремя разными способами.")]
     [InlineAutoMoqData("Тестов", "Тест", 60, 150, 80)]
     public void TestInputAndPrint(string surName, string name, int age, int height, int weight, Mock<IConsole> mock)
     {
@@ -48,11 +44,7 @@ public class QuestionnaireServiceTests
         mock.Verify(x => x.WriteLine($"{expecteds.Item1} {expecteds.Item2} {expecteds.Item3} лет {expecteds.Item4} см {expecteds.Item5} кг"), Times.Exactly(3));
     }
 
-    /// <summary>
-    /// Негативный сценарий:
-    /// Неудачный ввод анкеты через ввод данных с консоли.
-    /// </summary>
-    [Theory]
+    [Theory(DisplayName = "Негативный сценарий: Неудачный ввод анкеты через ввод данных с консоли.")]
     [AutoMoqData]
     public void TestInputFromConsole_WhenError_ThenNone(Mock<IConsole> mock)
     {
@@ -66,11 +58,7 @@ public class QuestionnaireServiceTests
         actual.Should().BeOfType<Fail<Questionnaire>>();
     }
 
-    /// <summary>
-    /// Негативный сценарий:
-    /// Неудачный вывод данных в консоль.
-    /// </summary>
-    [Theory]
+    [Theory(DisplayName = "Негативный сценарий: Неудачный вывод данных в консоль.")]
     [InlineAutoMoqData("Тестов", "Тест", 60, 150, 80)]
     public void TestPrintToConsole_WhenError_ThenNone(string surName, string name, int age, int height, int weight, Mock<IConsole> mock)
     {
