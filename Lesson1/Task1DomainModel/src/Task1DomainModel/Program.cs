@@ -1,0 +1,7 @@
+﻿using Kanadeiar.Common;
+
+ConsoleHelper.PrintHeader("Задача № 1. Написать программу «Анкета». Модель предметной области.", "DDDRetrainingOnCSharp1 C# Уровень 1 Лекция 1.");
+
+
+
+ConsoleHelper.PrintFooter();
