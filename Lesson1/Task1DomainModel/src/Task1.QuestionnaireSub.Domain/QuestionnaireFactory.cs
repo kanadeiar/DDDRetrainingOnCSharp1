@@ -4,7 +4,7 @@ using Task1.QuestionnaireSub.Domain.QuestionnaireAggregate.Values;
 
 namespace Task1.QuestionnaireSub.Domain;
 
-public class QuestionnaireFactory
+public static class QuestionnaireFactory
 {
     public static Questionnaire Create(QuestionnaireEntry entry)
     {

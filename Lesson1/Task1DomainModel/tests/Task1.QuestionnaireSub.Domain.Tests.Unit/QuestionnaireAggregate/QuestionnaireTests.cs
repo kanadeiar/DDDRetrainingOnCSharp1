@@ -2,6 +2,7 @@
 using FrameworkConsoleApp1Tests.Infrastructure;
 using Task1.QuestionnaireSub.Domain.QuestionnaireAggregate;
 using Task1.QuestionnaireSub.Domain.QuestionnaireAggregate.Events;
+using Task1.QuestionnaireSub.Domain.QuestionnaireAggregate.Formatting;
 using Task1.QuestionnaireSub.Domain.QuestionnaireAggregate.Values;
 
 namespace Task1.QuestionnaireSub.Domain.Tests.Unit.QuestionnaireAggregate;
@@ -44,5 +45,20 @@ public class QuestionnaireTests
         };
 
         act.Should().Throw<ApplicationException>();
+    }
+
+    [Theory(DisplayName = "Тестирование форматирования текста")]
+    [InlineAutoMoqData(1, "Тестов", "Тест", 60, 150, 80)]
+    public void TestFormatText(int id, string surName, string name, int age, int height, int weight)
+    {
+        var codes = FormatCode.AllFormats();
+        var sut = Questionnaire.CreateNew(new QuestionnaireId(id), new QuestionnaireNameValue(surName, name), new AgeValue(age),
+            new HeightValue(height), new WeightValue(weight));
+
+        foreach (var each in codes)
+        {
+            var actual = sut.FormatText(each);
+            actual.Should().Be("Тестов Тест 60 лет 150 см 80 кг");
+        }
     }
 }

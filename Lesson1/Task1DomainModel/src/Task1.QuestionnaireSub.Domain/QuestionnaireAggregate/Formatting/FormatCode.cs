@@ -21,7 +21,7 @@ public abstract record FormatCode
         public override string Variant => "Склеивание";
 
         public override string FormatText(QuestionnaireNameValue name, AgeValue age, HeightValue height, WeightValue weight) => 
-            name + " " + age + " " + height + " " + weight;
+            name + " " + age + " лет " + height + " см " + weight + " кг";
     }
 
     private record FormattedCode : FormatCode

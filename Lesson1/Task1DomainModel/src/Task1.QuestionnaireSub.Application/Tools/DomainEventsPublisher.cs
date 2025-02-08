@@ -4,7 +4,7 @@ namespace Task1.QuestionnaireSub.Application.Tools;
 
 public static class DomainEventsPublisher
 {
-    private static List<DomainEvent> _events = new();
+    private static readonly List<DomainEvent> _events = new();
     private static readonly Lock _lock = new();
 
     public static void Publish(IEnumerable<DomainEvent> events)
