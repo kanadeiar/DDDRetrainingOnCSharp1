@@ -1,0 +1,64 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{1A7D0605-D78C-4294-8D01-EA7A990AFEA6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{9E7E5A77-F9F3-4C1E-B019-02A0E976C993}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task1EventSource", "src\Task1EventSource\Task1EventSource.csproj", "{75CB9461-B76C-4894-91D4-24DF283D2C70}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task1.QuestionnaireSub.Domain", "src\Task1.QuestionnaireSub.Domain\Task1.QuestionnaireSub.Domain.csproj", "{085233FA-787F-42E1-94BB-DCC4C33F440A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task1.QuestionnaireSub.Contract", "src\Task1.QuestionnaireSub.Contract\Task1.QuestionnaireSub.Contract.csproj", "{65D508EB-FFF6-473A-B134-B86E7AF70924}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task1.QuestionnaireSub.Domain.Tests.Unit", "tests\Task1.QuestionnaireSub.Domain.Tests.Unit\Task1.QuestionnaireSub.Domain.Tests.Unit.csproj", "{F692CEF0-24E7-432A-846C-0EE9D261B477}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task1.QuestionnaireSub.Infra", "src\Task1.QuestionnaireSub.Infra\Task1.QuestionnaireSub.Infra.csproj", "{9F7592CC-C0FF-4A76-B406-A3C465F7512F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task1.QuestionnaireSub.Application", "src\Task1.QuestionnaireSub.Application\Task1.QuestionnaireSub.Application.csproj", "{68CD56DD-E4F1-4BEE-AFDF-AAF281FF7D25}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{75CB9461-B76C-4894-91D4-24DF283D2C70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75CB9461-B76C-4894-91D4-24DF283D2C70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75CB9461-B76C-4894-91D4-24DF283D2C70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75CB9461-B76C-4894-91D4-24DF283D2C70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{085233FA-787F-42E1-94BB-DCC4C33F440A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{085233FA-787F-42E1-94BB-DCC4C33F440A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{085233FA-787F-42E1-94BB-DCC4C33F440A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{085233FA-787F-42E1-94BB-DCC4C33F440A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65D508EB-FFF6-473A-B134-B86E7AF70924}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65D508EB-FFF6-473A-B134-B86E7AF70924}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65D508EB-FFF6-473A-B134-B86E7AF70924}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65D508EB-FFF6-473A-B134-B86E7AF70924}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F692CEF0-24E7-432A-846C-0EE9D261B477}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F692CEF0-24E7-432A-846C-0EE9D261B477}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F692CEF0-24E7-432A-846C-0EE9D261B477}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F692CEF0-24E7-432A-846C-0EE9D261B477}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F7592CC-C0FF-4A76-B406-A3C465F7512F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F7592CC-C0FF-4A76-B406-A3C465F7512F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F7592CC-C0FF-4A76-B406-A3C465F7512F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F7592CC-C0FF-4A76-B406-A3C465F7512F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68CD56DD-E4F1-4BEE-AFDF-AAF281FF7D25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68CD56DD-E4F1-4BEE-AFDF-AAF281FF7D25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68CD56DD-E4F1-4BEE-AFDF-AAF281FF7D25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68CD56DD-E4F1-4BEE-AFDF-AAF281FF7D25}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{75CB9461-B76C-4894-91D4-24DF283D2C70} = {1A7D0605-D78C-4294-8D01-EA7A990AFEA6}
+		{085233FA-787F-42E1-94BB-DCC4C33F440A} = {1A7D0605-D78C-4294-8D01-EA7A990AFEA6}
+		{65D508EB-FFF6-473A-B134-B86E7AF70924} = {1A7D0605-D78C-4294-8D01-EA7A990AFEA6}
+		{F692CEF0-24E7-432A-846C-0EE9D261B477} = {9E7E5A77-F9F3-4C1E-B019-02A0E976C993}
+		{9F7592CC-C0FF-4A76-B406-A3C465F7512F} = {1A7D0605-D78C-4294-8D01-EA7A990AFEA6}
+		{68CD56DD-E4F1-4BEE-AFDF-AAF281FF7D25} = {1A7D0605-D78C-4294-8D01-EA7A990AFEA6}
+	EndGlobalSection
+EndGlobal
