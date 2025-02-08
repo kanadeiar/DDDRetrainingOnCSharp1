@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Task1.QuestionnaireSub.Application\Task1.QuestionnaireSub.Application.csproj" />
+    <ProjectReference Include="..\Task1.QuestionnaireSub.Infra\Task1.QuestionnaireSub.Infra.csproj" />
   </ItemGroup>
 
 </Project>

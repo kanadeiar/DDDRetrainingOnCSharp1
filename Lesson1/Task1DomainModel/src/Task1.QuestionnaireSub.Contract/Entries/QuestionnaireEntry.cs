@@ -1,12 +1,12 @@
-﻿namespace Task1.QuestionnaireSub.Contract.Entries;
+﻿using Task1.QuestionnaireSub.Contract.Base;
 
-public class QuestionnaireEntry
+namespace Task1.QuestionnaireSub.Contract.Entries;
+
+public class QuestionnaireEntry : Entry
 {
-    public int Id { get; init; }
+    public string SurName { get; init; } = string.Empty;
 
-    public string? SurName { get; init; }
-
-    public string? Name { get; init; }
+    public string Name { get; init; } = string.Empty;
 
     public int Age { get; init; }
 
