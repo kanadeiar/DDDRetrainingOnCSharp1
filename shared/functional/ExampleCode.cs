@@ -1,6 +1,4 @@
-﻿using Kanadeiar.Common;
-
-namespace RefactoringLab.Common;
+﻿namespace Kanadeiar.Common;
 
 public abstract record ExampleCode
 {

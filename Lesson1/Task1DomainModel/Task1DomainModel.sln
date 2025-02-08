@@ -1,0 +1,64 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{D4F21CC2-6905-4D68-AED9-BE39ECBDEC7D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{E332E588-2D26-4E2A-8A17-D15D3A532C65}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task1DomainModel", "src\Task1DomainModel\Task1DomainModel.csproj", "{1BA331A5-0296-4A7E-90A0-33A0AFE67658}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task1.QuestionnaireSub.Domain", "src\Task1.QuestionnaireSub.Domain\Task1.QuestionnaireSub.Domain.csproj", "{A89485A6-D01E-41B4-9204-91528AE387C1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task1.QuestionnaireSub.Domain.Tests.Unit", "tests\Task1.QuestionnaireSub.Domain.Tests.Unit\Task1.QuestionnaireSub.Domain.Tests.Unit.csproj", "{1E5B0BEA-D26A-4DEF-B20C-BA075D07EACC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task1.QuestionnaireSub.Application", "src\Task1.QuestionnaireSub.Application\Task1.QuestionnaireSub.Application.csproj", "{8839AB02-8330-4DB4-882E-7191968A7594}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task1.QuestionnaireSub.Infra", "src\Task1.QuestionnaireSub.Infra\Task1.QuestionnaireSub.Infra.csproj", "{9E17DF70-A68D-4797-AC1D-CBBD33D3D797}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task1.QuestionnaireSub.Contract", "src\Task1.QuestionnaireSub.Contract\Task1.QuestionnaireSub.Contract.csproj", "{49CF1F49-5F95-4568-85B7-47A50172629A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1BA331A5-0296-4A7E-90A0-33A0AFE67658}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BA331A5-0296-4A7E-90A0-33A0AFE67658}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BA331A5-0296-4A7E-90A0-33A0AFE67658}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BA331A5-0296-4A7E-90A0-33A0AFE67658}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A89485A6-D01E-41B4-9204-91528AE387C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A89485A6-D01E-41B4-9204-91528AE387C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A89485A6-D01E-41B4-9204-91528AE387C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A89485A6-D01E-41B4-9204-91528AE387C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E5B0BEA-D26A-4DEF-B20C-BA075D07EACC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E5B0BEA-D26A-4DEF-B20C-BA075D07EACC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E5B0BEA-D26A-4DEF-B20C-BA075D07EACC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E5B0BEA-D26A-4DEF-B20C-BA075D07EACC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8839AB02-8330-4DB4-882E-7191968A7594}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8839AB02-8330-4DB4-882E-7191968A7594}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8839AB02-8330-4DB4-882E-7191968A7594}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8839AB02-8330-4DB4-882E-7191968A7594}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E17DF70-A68D-4797-AC1D-CBBD33D3D797}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E17DF70-A68D-4797-AC1D-CBBD33D3D797}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E17DF70-A68D-4797-AC1D-CBBD33D3D797}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E17DF70-A68D-4797-AC1D-CBBD33D3D797}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49CF1F49-5F95-4568-85B7-47A50172629A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49CF1F49-5F95-4568-85B7-47A50172629A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49CF1F49-5F95-4568-85B7-47A50172629A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49CF1F49-5F95-4568-85B7-47A50172629A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1BA331A5-0296-4A7E-90A0-33A0AFE67658} = {D4F21CC2-6905-4D68-AED9-BE39ECBDEC7D}
+		{A89485A6-D01E-41B4-9204-91528AE387C1} = {D4F21CC2-6905-4D68-AED9-BE39ECBDEC7D}
+		{1E5B0BEA-D26A-4DEF-B20C-BA075D07EACC} = {E332E588-2D26-4E2A-8A17-D15D3A532C65}
+		{8839AB02-8330-4DB4-882E-7191968A7594} = {D4F21CC2-6905-4D68-AED9-BE39ECBDEC7D}
+		{9E17DF70-A68D-4797-AC1D-CBBD33D3D797} = {D4F21CC2-6905-4D68-AED9-BE39ECBDEC7D}
+		{49CF1F49-5F95-4568-85B7-47A50172629A} = {D4F21CC2-6905-4D68-AED9-BE39ECBDEC7D}
+	EndGlobalSection
+EndGlobal

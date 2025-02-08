@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\..\..\shared\console\**\*.*">
+      <Link>Common\%(RecursiveDir)%(FileName)%(Extension)</Link>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Task1.QuestionnaireSub.Application\Task1.QuestionnaireSub.Application.csproj" />
+    <ProjectReference Include="..\Task1.QuestionnaireSub.Infra\Task1.QuestionnaireSub.Infra.csproj" />
+  </ItemGroup>
+
+</Project>
