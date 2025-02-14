@@ -1,4 +1,6 @@
-﻿namespace Task1.QuestionnaireSub.Domain.Base;
+﻿using Task1.QuestionnaireSub.Contract.Base;
+
+namespace Task1.QuestionnaireSub.Domain.Base;
 
 public class Aggregate
 {

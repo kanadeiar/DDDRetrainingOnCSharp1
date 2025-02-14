@@ -1,4 +1,4 @@
-﻿namespace Task1.QuestionnaireSub.Domain.Base;
+﻿namespace Task1.QuestionnaireSub.Contract.Base;
 
 public record DomainEvent
 {
