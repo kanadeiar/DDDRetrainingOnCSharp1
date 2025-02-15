@@ -9,7 +9,7 @@ public static class DeveloperScript
     {
         dispatcher.RegisterHandler<QuestionnaireCreated>(ev =>
         {
-            Console.WriteLine("## События создания новой анкеты ##" + ev.Id + " " + ev.OccurredOn);
+            Console.WriteLine("## Событие создания новой анкеты ##" + ev.Id + " " + ev.OccurredOn);
         });
     }
 }

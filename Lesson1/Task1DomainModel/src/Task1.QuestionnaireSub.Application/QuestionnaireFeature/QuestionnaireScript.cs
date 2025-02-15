@@ -24,10 +24,7 @@ public class QuestionnaireScript(IQuestionnairesStorage storage, IDispatcher dis
                 new WeightValue(weight));
             var events = questionnaire.TakeEvents();
 
-            foreach (var each in events)
-            {
-                dispatcher.Dispatch(each);
-            }
+            dispatcher.Dispatch(events);
 
             storage.Save(questionnaire);
 

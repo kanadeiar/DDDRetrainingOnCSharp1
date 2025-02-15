@@ -10,6 +10,7 @@ var storage = new QuestionnairesStorage();
 var dispatcher = new DomainEventDispatcher();
 var script = new QuestionnaireScript(storage, dispatcher);
 DeveloperScript.RunExample(dispatcher);
+dispatcher.Run();
 
 var id = script.CreateQuestionnaireFromConsole()
     .Throw(fail => throw new ApplicationException(fail.Error));

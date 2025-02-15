@@ -1,6 +1,5 @@
 ﻿using Task1.QuestionnaireSub.Contract.Abstractions;
 using Task1.QuestionnaireSub.Contract.Base;
-using Task1.QuestionnaireSub.Domain.Base;
 
 namespace Task1.QuestionnaireSub.Infra.Tools;
 
@@ -8,41 +7,61 @@ public class DomainEventDispatcher : IDispatcher
 {
     private readonly Lock _lock = new();
     private readonly Dictionary<Type, List<Action<DomainEvent>>> _routes = new();
+    private readonly List<DomainEvent> _events = new();
 
     public void RegisterHandler<T>(Action<T> handler)
         where T : DomainEvent
     {
-        if (!_routes.TryGetValue(typeof(T), out var handlers))
+        lock (_lock)
         {
-            handlers = new List<Action<DomainEvent>>();
-            _routes.Add(typeof(T), handlers);
-        }
+            if (!_routes.TryGetValue(typeof(T), out var handlers))
+            {
+                handlers = new List<Action<DomainEvent>>();
+                _routes.Add(typeof(T), handlers);
+            }
 
-        handlers.Add(message => handler((T)message));
+            handlers.Add(message => handler((T)message));
+        }
     }
 
-    public void Dispatch<T>(T @event)
-        where T : DomainEvent
+    public void Dispatch(IEnumerable<DomainEvent> events)
     {
-        if (!_routes.TryGetValue(@event.GetType(), out var handlers)) return;
-
-        foreach (var each in handlers)
+        lock (_lock)
         {
-            var local = each;
-            Task.Run(() =>
+            _events.AddRange(events);
+        }
+    }
+
+    public void Run()
+    {
+        Task.Run(async () =>
+        {
+            while (true)
             {
-                try
+                lock (_lock)
                 {
-                    lock (_lock)
+                    try
                     {
-                        local(@event);
+                        if (_events.Any())
+                        {
+                            foreach (var each in _events)
+                            {
+                                if (!_routes.TryGetValue(each.GetType(), out var handlers)) return;
+
+                                Array.ForEach(handlers.ToArray(), action => action.Invoke(each));
+                            }
+
+                            _events.Clear();
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e);
                     }
                 }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e);
-                }
-            });
-        }
+
+                await Task.Delay(10);
+            }
+        });
     }
 }

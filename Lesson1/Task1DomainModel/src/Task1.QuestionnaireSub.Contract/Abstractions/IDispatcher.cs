@@ -7,6 +7,5 @@ public interface IDispatcher
     void RegisterHandler<T>(Action<T> handler)
         where T : DomainEvent;
 
-    void Dispatch<T>(T @event)
-        where T : DomainEvent;
+    public void Dispatch(IEnumerable<DomainEvent> events);
 }
