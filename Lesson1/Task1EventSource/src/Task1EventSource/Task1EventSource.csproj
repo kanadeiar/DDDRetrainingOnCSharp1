@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Task1.QuestionnaireSub.Application\Task1.QuestionnaireSub.Application.csproj" />
+    <ProjectReference Include="..\Task1.QuestionnaireSub.Contract\Task1.QuestionnaireSub.Contract.csproj" />
+    <ProjectReference Include="..\Task1.QuestionnaireSub.Domain\Task1.QuestionnaireSub.Domain.csproj" />
+    <ProjectReference Include="..\Task1.QuestionnaireSub.Infra\Task1.QuestionnaireSub.Infra.csproj" />
+  </ItemGroup>
+
+</Project>

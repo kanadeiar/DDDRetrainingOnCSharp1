@@ -1,13 +1,13 @@
 ﻿using Kanadeiar.Common;
 using Task1.QuestionnaireSub.Application.Ports;
-using Task1.QuestionnaireSub.Application.Tools;
+using Task1.QuestionnaireSub.Contract.Abstractions;
 using Task1.QuestionnaireSub.Domain.QuestionnaireAggregate;
 using Task1.QuestionnaireSub.Domain.QuestionnaireAggregate.Formatting;
 using Task1.QuestionnaireSub.Domain.QuestionnaireAggregate.Values;
 
-namespace Task1.QuestionnaireSub.Application.Scripts;
+namespace Task1.QuestionnaireSub.Application.QuestionnaireFeature;
 
-public class QuestionnaireScript(IQuestionnairesStorage storage)
+public class QuestionnaireScript(IQuestionnairesStorage storage, IDispatcher dispatcher)
 {
     public Result<QuestionnaireId> CreateQuestionnaireFromConsole()
     {
@@ -23,7 +23,8 @@ public class QuestionnaireScript(IQuestionnairesStorage storage)
                 new QuestionnaireNameValue(surName, name), new AgeValue(age), new HeightValue(height),
                 new WeightValue(weight));
             var events = questionnaire.TakeEvents();
-            DomainEventsPublisher.Publish(events);
+
+            dispatcher.Dispatch(events);
 
             storage.Save(questionnaire);
 

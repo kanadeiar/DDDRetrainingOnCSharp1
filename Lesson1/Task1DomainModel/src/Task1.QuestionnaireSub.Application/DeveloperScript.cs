@@ -1,18 +1,15 @@
-﻿using Task1.QuestionnaireSub.Application.Tools;
+﻿using Task1.QuestionnaireSub.Contract.Abstractions;
 using Task1.QuestionnaireSub.Domain.QuestionnaireAggregate.Events;
 
 namespace Task1.QuestionnaireSub.Application;
 
 public static class DeveloperScript
 {
-    public static void RunExample()
+    public static void RunExample(IDispatcher dispatcher)
     {
-        DomainEventsSubscriber.Subscribe<QuestionnaireCreated>(@event =>
+        dispatcher.RegisterHandler<QuestionnaireCreated>(ev =>
         {
-            var created = @event as QuestionnaireCreated;
-            Console.WriteLine("## Событие создания новой анкеты ## " + created.Id + " " + created.OccurredOn);
+            Console.WriteLine("## Событие создания новой анкеты ##" + ev.Id + " " + ev.OccurredOn);
         });
-
-        DomainEventsHandler.Run();
     }
 }
