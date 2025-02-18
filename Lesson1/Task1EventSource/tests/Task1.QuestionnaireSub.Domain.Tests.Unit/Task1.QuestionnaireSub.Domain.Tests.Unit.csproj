@@ -33,6 +33,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\Task1.QuestionnaireSub.Application\Task1.QuestionnaireSub.Application.csproj" />
+    <ProjectReference Include="..\..\src\Task1.QuestionnaireSub.Contract\Task1.QuestionnaireSub.Contract.csproj" />
+    <ProjectReference Include="..\..\src\Task1.QuestionnaireSub.Domain\Task1.QuestionnaireSub.Domain.csproj" />
+    <ProjectReference Include="..\..\src\Task1.QuestionnaireSub.Infra\Task1.QuestionnaireSub.Infra.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Using Include="Xunit" />
   </ItemGroup>
 

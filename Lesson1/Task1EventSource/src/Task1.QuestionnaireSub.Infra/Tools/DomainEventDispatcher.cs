@@ -1,5 +1,5 @@
-﻿using Task1.QuestionnaireSub.Contract.Abstractions;
-using Task1.QuestionnaireSub.Contract.Base;
+﻿using Task1.QuestionnaireSub.Contract.EventSourcing.Abstractions;
+using Task1.QuestionnaireSub.Contract.EventSourcing.Base;
 
 namespace Task1.QuestionnaireSub.Infra.Tools;
 
@@ -9,7 +9,7 @@ public class DomainEventDispatcher : IDispatcher
     private readonly Dictionary<Type, List<Action<DomainEvent>>> _routes = new();
     private readonly List<DomainEvent> _events = new();
 
-    public void RegisterHandler<T>(Action<T> handler)
+    public void RegisterHandler<T>(Action<T> handler) 
         where T : DomainEvent
     {
         lock (_lock)
